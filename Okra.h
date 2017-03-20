@@ -89,8 +89,6 @@ public:
     }
   }
 };
-
-Examples allExamples;
 }
 }
 
@@ -113,10 +111,19 @@ Examples allExamples;
 #endif
 
 #ifdef OKRA_MAIN
-
+namespace okra {
+namespace internals {
+Examples allExamples;
+}
+}
 int main(int argc, char **argv) {
   okra::internals::allExamples.RunAll();
   return 0;
 }
-
+#else
+namespace okra {
+namespace internals {
+extern Examples allExamples;
+}
+}
 #endif
